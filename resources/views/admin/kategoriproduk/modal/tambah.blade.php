@@ -14,6 +14,10 @@
                         <input class="form-control" name="namakategori" type="text">
                     </div>
                     <div class="mb-3">
+                        <label class="form-label" for="formFile">Deskripsi</label>
+                        <input class="form-control" maxlength="100" id="defaultconfig-3" name="deskripsikategori" type="text" placeholder="Type Something..">
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label" for="formFile">File upload</label>
                         <input class="form-control" type="file" name="gambarkategori">
                     </div>

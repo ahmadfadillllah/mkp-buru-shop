@@ -18,6 +18,7 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
+                    @include('admin.notification.index')
                     @include('admin.kategoriproduk.modal.tambah')
                     <button type="button" class="btn btn-inverse-primary" data-bs-toggle="modal" data-bs-target="#tambahKategori" style="float: right">Tambah Kategori</button>
                     <h6 class="card-title">Kategori Produk</h6>
@@ -27,6 +28,8 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nama Kategori</th>
+                                    <th>Deskripsi</th>
+                                    <th>Gambar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,6 +37,8 @@
                                     <tr>
                                         <th>{{ $loop->iteration }}</th>
                                         <td>{{ $kp->namakategori }}</td>
+                                        <td>{{ $kp->deskripsikategori }}</td>
+                                        <td><img src="{{ asset('admin/template/assets/images/kategoriproduk') }}/{{ $kp->gambarkategori }}" alt="Gambar tidak ditemukan" style="border-radius: 80px"></td>
                                     </tr>
                                 @endforeach
                             </tbody>
