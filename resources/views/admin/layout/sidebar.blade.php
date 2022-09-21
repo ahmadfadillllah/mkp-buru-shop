@@ -1,0 +1,70 @@
+<div class="main-wrapper">
+<nav class="sidebar">
+    <div class="sidebar-header">
+        <a href="#" class="sidebar-brand">
+            MKP<span>Buru</span>
+        </a>
+        <div class="sidebar-toggler not-active">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="sidebar-body">
+        <ul class="nav">
+            <li class="nav-item nav-category">Main</li>
+            <li class="nav-item">
+                <a href="{{ route('dashboard.index') }}" class="nav-link">
+                    <i class="link-icon" data-feather="box"></i>
+                    <span class="link-title">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item nav-category">Web Apps</li>
+            <li class="nav-item">
+                <a href="{{ route('kategoriproduk.index') }}" class="nav-link">
+                    <i class="link-icon" data-feather="inbox"></i>
+                    <span class="link-title">Kategori Produk</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0);" class="nav-link">
+                    <i class="link-icon" data-feather="layout"></i>
+                    <span class="link-title">Daftar Produk</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0);" class="nav-link">
+                    <i class="link-icon" data-feather="book"></i>
+                    <span class="link-title">Laporan Penjualan</span>
+                </a>
+            </li>
+            <li class="nav-item nav-category">Extra</li>
+            <li class="nav-item">
+                <a href="javascript:void(0);" class="nav-link">
+                    <i class="link-icon" data-feather="feather"></i>
+                    <span class="link-title">Lihat Pesanan</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="javascript:void(0);" class="nav-link">
+                    <i class="link-icon" data-feather="users"></i>
+                    <span class="link-title">Kelola Akun</span>
+                </a>
+            </li>
+            <li class="nav-item nav-category">Pages</li>
+            <li class="nav-item">
+                <a href="javascript:void(0);" class="nav-link">
+                    <i class="link-icon" data-feather="user"></i>
+                    <span class="link-title">Settings</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('logout') }}" class="nav-link">
+                    <i class="link-icon" data-feather="lock"></i>
+                    <span class="link-title">Logout</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
