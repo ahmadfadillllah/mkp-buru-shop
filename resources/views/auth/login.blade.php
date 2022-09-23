@@ -13,6 +13,7 @@
                             </div>
                             <div class="col-md-8 ps-md-0">
                                 <div class="auth-form-wrapper px-4 py-5">
+                                    @include('auth.notification.index')
                                     <a href="#" class="noble-ui-logo d-block mb-2">{{ config('app.name') }}</a>
                                     <h5 class="text-muted fw-normal mb-4">Selamat Datang, Login ke Akun Kamu!</h5>
                                     <form class="forms-sample" action="{{ route('login.post') }}" method="POST">

@@ -13,8 +13,9 @@
                             </div>
                             <div class="col-md-8 ps-md-0">
                                 <div class="auth-form-wrapper px-4 py-5">
+                                    @include('auth.notification.index')
                                     <a href="#" class="noble-ui-logo d-block mb-2">{{ config('app.name') }}</a>
-                                    <h5 class="text-muted fw-normal mb-4">Selamat Datang, Registrasi akunmu!</h5>
+                                    <h5 class="text-muted fw-normal mb-4">Selamat Datang, Registrasi tokomu sekarang!</h5>
                                     <form class="forms-sample" action="{{ route('register.post') }}" method="POST">
                                         @csrf
                                         <div class="mb-3">
@@ -27,7 +28,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="userEmail" class="form-label">No. Handphone</label>
-                                            <input type="text" class="form-control" name="nohp" placeholder="No. Handphone">
+                                            <input type="number" class="form-control" name="nohp" placeholder="No. Handphone">
                                         </div>
                                         <div class="mb-3">
                                             <label for="userEmail" class="form-label">Alamat Lengkap</label>

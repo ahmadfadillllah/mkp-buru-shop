@@ -1,8 +1,6 @@
 @include('admin.layout.head')
-@include('admin.notification.index')
 <!-- partial:partials/_sidebar.html -->
 @include('admin.layout.sidebar')
-@include('admin.layout.settings-sidebar')
 <!-- partial -->
 @include('admin.layout.partial')
 <div class="page-content">
@@ -30,15 +28,18 @@
                                     <th>Nama Kategori</th>
                                     <th>Deskripsi</th>
                                     <th>Gambar</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($kategoriproduk as $kp)
+                                @include('admin.kategoriproduk.modal.edit')
                                     <tr>
                                         <th>{{ $loop->iteration }}</th>
                                         <td>{{ $kp->namakategori }}</td>
                                         <td>{{ $kp->deskripsikategori }}</td>
                                         <td><img src="{{ asset('admin/template/assets/images/kategoriproduk') }}/{{ $kp->gambarkategori }}" alt="Gambar tidak ditemukan" style="border-radius: 80px"></td>
+                                        <td><button type="button" class="btn btn-outline-warning mb-1 mb-md-0" data-bs-toggle="modal" data-bs-target="#editKategori{{ $kp->id }}">Edit</button></td>
                                     </tr>
                                 @endforeach
                             </tbody>

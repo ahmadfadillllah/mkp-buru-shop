@@ -63,9 +63,9 @@
                     </div>
                     <ul class="list-unstyled p-1">
                         <li class="dropdown-item py-2">
-                            <a href="pages/general/profile.html" class="text-body ms-0">
+                            <a href="{{ route('settings.index') }}" class="text-body ms-0">
                                 <i class="me-2 icon-md" data-feather="user"></i>
-                                <span>Profile</span>
+                                <span>Settings</span>
                             </a>
                         </li>
                         <li class="dropdown-item py-2">

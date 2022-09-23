@@ -42,4 +42,3 @@
 </head>
 
 <body>
-@include('admin.notification.index')

@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="javascript:void(0);" class="nav-link">
+                <a href="{{ route('produk.index') }}" class="nav-link">
                     <i class="link-icon" data-feather="layout"></i>
                     <span class="link-title">Daftar Produk</span>
                 </a>
@@ -46,14 +46,20 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="javascript:void(0);" class="nav-link">
+                <a href="{{ route('akun.index') }}" class="nav-link">
                     <i class="link-icon" data-feather="users"></i>
                     <span class="link-title">Kelola Akun</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('chat.index') }}" class="nav-link">
+                    <i class="link-icon" data-feather="message-square"></i>
+                    <span class="link-title">Chat</span>
+                </a>
+            </li>
             <li class="nav-item nav-category">Pages</li>
             <li class="nav-item">
-                <a href="javascript:void(0);" class="nav-link">
+                <a href="{{ route('settings.index') }}" class="nav-link">
                     <i class="link-icon" data-feather="user"></i>
                     <span class="link-title">Settings</span>
                 </a>

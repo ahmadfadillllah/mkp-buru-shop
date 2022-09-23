@@ -1,8 +1,7 @@
 @include('admin.layout.head')
-@include('admin.notification.index')
 <!-- partial:partials/_sidebar.html -->
 @include('admin.layout.sidebar')
-@include('admin.layout.settings-sidebar')
+@include('admin.notification.index')
 <!-- partial -->
 @include('admin.layout.partial')
 <div class="page-content">
