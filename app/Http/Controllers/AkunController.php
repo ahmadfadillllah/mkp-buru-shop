@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AkunController extends Controller
 {
@@ -42,7 +43,7 @@ class AkunController extends Controller
         ]);
 
         $akun = User::find($id);
-        $akun->password = $request->passwordbaru;
+        $akun->password = Hash::make($request->passwordbaru);
         $akun->save();
 
         if($akun){
