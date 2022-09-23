@@ -25,7 +25,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->route('dashboard.index')->with('success', 'Selamat Datang');
+            return redirect()->route('home.index')->with('success', 'Selamat Datang');
         }
 
         return back()->withErrors([
@@ -78,6 +78,6 @@ class AuthController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('login')->with('success', 'Anda telah logout');
+        return redirect()->route('homepage')->with('success', 'Anda telah logout');
     }
 }

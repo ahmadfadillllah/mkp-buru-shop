@@ -10,7 +10,7 @@
 @if (session('info'))
     <script>
         Swal.fire(
-        'Good!',
+        'Upps!',
         '{{ session('info') }}',
         'info'
         )

@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriProdukController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,10 +27,17 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function () {
-    return redirect()->route('home.index');
-});
-    Route::get('/homepage',[HomeController::class, 'homepage'])->name('home.index');
+    return redirect()->route('homepage');
+})->name('home');
 
+Route::get('/homepage',[HomeController::class, 'homepage'])->name('homepage');
+Route::get('/about',[HomeController::class, 'about'])->name('about');
+Route::get('/contact',[HomeController::class, 'contact'])->name('contact');
+
+Route::get('/logincustomer',[HomeController::class, 'logincustomer'])->name('logincustomer');
+Route::post('/logincustomer/post',[HomeController::class, 'logincustomerpost'])->name('logincustomer.post');
+Route::get('/registercustomer',[HomeController::class, 'registercustomer'])->name('registercustomer');
+Route::post('/registercustomer/post',[HomeController::class, 'registercustomerpost'])->name('registercustomer.post');
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login/post', [AuthController::class, 'loginpost'])->name('login.post');
@@ -38,6 +46,17 @@ Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register/post', [AuthController::class, 'registerpost'])->name('register.post');
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::group(['middleware' => ['auth', 'checkRole:customer,admin,penjual']], function(){
+    Route::get('/customer/homepage',[HomeController::class, 'index'])->name('home.index');
+    Route::get('/customer/contact',[ContactController::class, 'contact'])->name('contact.customer');
+    Route::get('/customer/contact/post',[ContactController::class, 'contactpost'])->name('contact.post');
+
+    Route::get('/dashboard/settings', [SettingsController::class, 'index'])->name('settings.index');
+    Route::post('/dashboard/settings/changepassword', [SettingsController::class, 'changepassword'])->name('settings.changepassword');
+    Route::post('/dashboard/settings/changeavatar', [SettingsController::class, 'changeavatar'])->name('settings.changeavatar');
+    Route::post('/dashboard/settings/changeprofile', [SettingsController::class, 'changeprofile'])->name('settings.changeprofile');
+});
 
 Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
     Route::get('/dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index');
@@ -56,6 +75,8 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
     Route::post('/dashboard/akun/changepassword/{id}', [AkunController::class, 'changepassword'])->name('akun.changepassword');
 
     Route::get('/dashboard/chat', [ChatController::class, 'index'])->name('chat.index');
+    Route::get('/dashboard/contact', [ContactController::class, 'index'])->name('contact.index');
+    Route::get('/dashboard/contact/delete', [ContactController::class, 'delete'])->name('contact.delete');
 
     Route::get('/dashboard/settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::post('/dashboard/settings/changepassword', [SettingsController::class, 'changepassword'])->name('settings.changepassword');

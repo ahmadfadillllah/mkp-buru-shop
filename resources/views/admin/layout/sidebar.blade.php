@@ -57,6 +57,12 @@
                     <span class="link-title">Chat</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('contact.index') }}" class="nav-link">
+                    <i class="link-icon" data-feather="message-square"></i>
+                    <span class="link-title">Contact</span>
+                </a>
+            </li>
             <li class="nav-item nav-category">Pages</li>
             <li class="nav-item">
                 <a href="{{ route('settings.index') }}" class="nav-link">
