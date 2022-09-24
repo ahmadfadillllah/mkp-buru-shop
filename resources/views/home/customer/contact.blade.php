@@ -24,7 +24,9 @@
                         <div class="contact-title">
                             <h4>Contact Information</h4>
                         </div>
-                        <form id="contact-form" class="contact-form" action="assets/mail.php" method="post">
+                        @include('auth.notification.index')
+                        <form class="contact-form" action="{{ route('contact.post') }}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="contact-input-style mb-30">

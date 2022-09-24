@@ -60,7 +60,7 @@
                                 </a>
                                 <div class="product-action">
                                     @if (Auth::user())
-                                    <a class="animate-top" title="Add To Cart" href="#">
+                                    <a class="animate-left" title="Add To Cart" href="{{ route('home.addcart', $p->id) }}">
                                         <i class="pe-7s-cart"></i>
                                     </a>
                                     @endif

@@ -46,3 +46,13 @@
         {{ $message }}
     </div>
 @enderror
+@error('subject')
+    <div class="alert alert-warning" role="alert">
+        {{ $message }}
+    </div>
+@enderror
+@error('message')
+    <div class="alert alert-warning" role="alert">
+        {{ $message }}
+    </div>
+@enderror

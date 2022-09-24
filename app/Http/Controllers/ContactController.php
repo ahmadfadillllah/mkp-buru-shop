@@ -4,13 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
     //
     public function contact()
     {
-        return view('home.customer.contact');
+        $cart = Cart::join('users', 'cart.user_id','users.id')
+        ->join('produk', 'cart.produk_id','produk.id')
+        ->select('cart.id', 'cart.user_id', 'cart.status' ,'produk.gambarproduk1', 'produk.namaproduk', 'produk.hargaproduk', 'cart.quantity')
+        ->where('cart.status', '=', 'Belum Dipesan')->where('cart.user_id', '=', Auth::user()->id)->get();
+
+        $item = Cart::join('produk', 'cart.produk_id','produk.id')
+        ->select(DB::raw('produk.hargaproduk * cart.quantity as total_harga'))
+        ->where('cart.status', '=', 'Belum Dipesan')->where('cart.user_id', '=', Auth::user()->id)->get();
+
+        $total = $item->sum('total_harga');
+
+        return view('home.customer.contact', compact('cart', 'total'));
     }
 
     public function index()

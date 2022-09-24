@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\KategoriProduk;
 use App\Models\Produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -53,7 +55,49 @@ class HomeController extends Controller
         )->get();
         $kategoriproduk = KategoriProduk::all();
 
-        return view('home.index', compact('produk', 'kategoriproduk'));
+        $cart = Cart::join('users', 'cart.user_id','users.id')
+        ->join('produk', 'cart.produk_id','produk.id')
+        ->select('cart.id', 'cart.user_id', 'cart.status' ,'produk.gambarproduk1', 'produk.namaproduk', 'produk.hargaproduk', 'cart.quantity')
+        ->where('cart.status', '=', 'Belum Dipesan')->where('cart.user_id', '=', Auth::user()->id)->get();
+
+        $item = Cart::join('produk', 'cart.produk_id','produk.id')
+        ->select(DB::raw('produk.hargaproduk * cart.quantity as total_harga'))
+        ->where('cart.status', '=', 'Belum Dipesan')->where('cart.user_id', '=', Auth::user()->id)->get();
+
+        $total = $item->sum('total_harga');
+
+        return view('home.index', compact('produk', 'kategoriproduk', 'cart', 'total'));
+    }
+
+    public function addcart(Request $request,$id)
+    {
+        $prod = Cart::where('produk_id',$id)->where('status','Belum Dipesan')->where('user_id',Auth::user()->id)->get()->count();
+        if($prod >= 1){
+            return redirect()->route('home.index')->with('info', 'Barang sudah ada dikeranjang');
+        }else if ($prod == 0){
+            $cart = new Cart;
+            $cart->user_id = Auth::user()->id;
+            $cart->produk_id = $id;
+            $cart->quantity = 1;
+            $cart->status = 'Belum Dipesan';
+            $cart->save();
+        }
+
+        if($cart){
+            return redirect()->route('home.index')->with('success', 'Berhasil masuk ke keranjang');
+        }
+
+        return redirect()->route('home.index')->with('info', 'Gagal masuk ke keranjang');
+    }
+
+    public function delete($id)
+    {
+        $cart = Cart::where('id', $id)->delete();
+
+        if($cart){
+            return redirect()->route('cart.index')->with('success', 'Produk telah dihapus dari keranjang');
+        }
+        return redirect()->route('cart.index')->with('info', 'Produk gagal dihapus dari keranjang');
     }
 
     public function contact()
@@ -64,6 +108,22 @@ class HomeController extends Controller
     public function about()
     {
         return view('home.about');
+    }
+
+    public function aboutcustomer()
+    {
+        $cart = Cart::join('users', 'cart.user_id','users.id')
+        ->join('produk', 'cart.produk_id','produk.id')
+        ->select('cart.id', 'cart.user_id', 'cart.status' ,'produk.gambarproduk1', 'produk.namaproduk', 'produk.hargaproduk', 'cart.quantity')
+        ->where('cart.status', '=', 'Belum Dipesan')->where('cart.user_id', '=', Auth::user()->id)->get();
+
+        $item = Cart::join('produk', 'cart.produk_id','produk.id')
+        ->select(DB::raw('produk.hargaproduk * cart.quantity as total_harga'))
+        ->where('cart.status', '=', 'Belum Dipesan')->where('cart.user_id', '=', Auth::user()->id)->get();
+
+        $total = $item->sum('total_harga');
+
+        return view('home.customer.about', compact('cart', 'total'));
     }
 
     public function logincustomer()

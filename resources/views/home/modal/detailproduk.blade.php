@@ -52,11 +52,8 @@
                         <p>Penjual: {{ $p->name }}</p>
                         @if (Auth::user())
                         <div class="quickview-plus-minus">
-                            <div class="cart-plus-minus">
-                                <input type="text" value="1" name="quantity" class="cart-plus-minus-box">
-                            </div>
                             <div class="quickview-btn-cart">
-                                <a class="btn-hover-black" href="#">Add to cart</a>
+                                <a class="btn-hover-black" href="{{ route('home.addcart', $p->id) }}">Add to cart</a>
                             </div>
                         </div>
                         @endif

@@ -55,7 +55,7 @@
     </div>
 </footer>
 <!-- modal -->
-<!-- all js here -->
+
 <script src="{{ asset('home') }}/assets/js/vendor/jquery-1.12.4.min.js"></script>
 <script src="{{ asset('home') }}/assets/js/popper.js"></script>
 <script src="{{ asset('home') }}/assets/js/bootstrap.min.js"></script>

@@ -19,50 +19,64 @@
                     <span class="link-title">Dashboard</span>
                 </a>
             </li>
+            @if (Auth::user()->role == 'admin' or Auth::user()->role == 'penjual')
             <li class="nav-item nav-category">Web Apps</li>
-            <li class="nav-item">
-                <a href="{{ route('kategoriproduk.index') }}" class="nav-link">
-                    <i class="link-icon" data-feather="inbox"></i>
-                    <span class="link-title">Kategori Produk</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('produk.index') }}" class="nav-link">
-                    <i class="link-icon" data-feather="layout"></i>
-                    <span class="link-title">Daftar Produk</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="javascript:void(0);" class="nav-link">
-                    <i class="link-icon" data-feather="book"></i>
-                    <span class="link-title">Laporan Penjualan</span>
-                </a>
-            </li>
+            @endif
+            @if (Auth::user()->role == 'admin')
+                <li class="nav-item">
+                    <a href="{{ route('kategoriproduk.index') }}" class="nav-link">
+                        <i class="link-icon" data-feather="inbox"></i>
+                        <span class="link-title">Kategori Produk</span>
+                    </a>
+                </li>
+            @endif
+            @if (Auth::user()->role == 'penjual')
+                <li class="nav-item">
+                    <a href="{{ route('produk.index') }}" class="nav-link">
+                        <i class="link-icon" data-feather="layout"></i>
+                        <span class="link-title">Daftar Produk</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0);" class="nav-link">
+                        <i class="link-icon" data-feather="book"></i>
+                        <span class="link-title">Laporan Penjualan</span>
+                    </a>
+                </li>
+            @endif
+            @if (Auth::user()->role == 'admin' or Auth::user()->role == 'penjual')
             <li class="nav-item nav-category">Extra</li>
-            <li class="nav-item">
-                <a href="javascript:void(0);" class="nav-link">
-                    <i class="link-icon" data-feather="feather"></i>
-                    <span class="link-title">Lihat Pesanan</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('akun.index') }}" class="nav-link">
-                    <i class="link-icon" data-feather="users"></i>
-                    <span class="link-title">Kelola Akun</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('chat.index') }}" class="nav-link">
-                    <i class="link-icon" data-feather="message-square"></i>
-                    <span class="link-title">Chat</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('contact.index') }}" class="nav-link">
-                    <i class="link-icon" data-feather="message-square"></i>
-                    <span class="link-title">Contact</span>
-                </a>
-            </li>
+            @endif
+            @if (Auth::user()->role == 'penjual')
+                <li class="nav-item">
+                    <a href="javascript:void(0);" class="nav-link">
+                        <i class="link-icon" data-feather="feather"></i>
+                        <span class="link-title">Lihat Pesanan</span>
+                    </a>
+                </li>
+            @endif
+            @if (Auth::user()->role == 'admin')
+                <li class="nav-item">
+                    <a href="{{ route('akun.index') }}" class="nav-link">
+                        <i class="link-icon" data-feather="users"></i>
+                        <span class="link-title">Kelola Akun</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('contact.index') }}" class="nav-link">
+                        <i class="link-icon" data-feather="message-square"></i>
+                        <span class="link-title">Contact</span>
+                    </a>
+                </li>
+            @endif
+            @if (Auth::user()->role == 'admin' or Auth::user()->role == 'penjual')
+                <li class="nav-item">
+                    <a href="{{ route('chat.index') }}" class="nav-link">
+                        <i class="link-icon" data-feather="message-square"></i>
+                        <span class="link-title">Chat</span>
+                    </a>
+                </li>
+            @endif
             <li class="nav-item nav-category">Pages</li>
             <li class="nav-item">
                 <a href="{{ route('settings.index') }}" class="nav-link">

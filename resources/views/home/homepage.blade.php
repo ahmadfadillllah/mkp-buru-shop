@@ -9,6 +9,8 @@
                     <div class="ms-auto col-lg-6">
                         <div class="furniture-content fadeinup-animated">
                             <h2 class="animated">Comfort <br>Collection.</h2>
+                            <p class="animated">Registrasikan Tokomu Sekarang untuk memulai jualan!</p>
+                            <a class="furniture-slider-btn btn-hover animated" href="{{ route('register') }}">Register</a>
                         </div>
                     </div>
                 </div>
@@ -21,6 +23,8 @@
                     <div class="ms-auto col-lg-6">
                         <div class="furniture-content fadeinup-animated">
                             <h2 class="animated">Comfort <br>Collection.</h2>
+                            <p class="animated">Registrasikan Tokomu Sekarang untuk memulai jualan!</p>
+                            <a class="furniture-slider-btn btn-hover animated" href="{{ route('register') }}">Register</a>
                         </div>
                     </div>
                 </div>

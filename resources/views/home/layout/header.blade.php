@@ -10,13 +10,11 @@
                         <ul>
                             @if (Auth::user())
                                     <li><a href="{{ route('home.index') }}"> Home </a></li>
-                            @else
-                                    <li><a href="{{ route('homepage') }}"> Home </a></li>
-                            @endif
-                            <li><a href="{{ route('about') }}"> About </a></li>
-                            @if (Auth::user())
+                                    <li><a href="{{ route('home.about') }}"> About </a></li>
                                     <li><a href="{{ route('contact.customer') }}"> Contact </a></li>
                             @else
+                                    <li><a href="{{ route('homepage') }}"> Home </a></li>
+                                    <li><a href="{{ route('about') }}"> About </a></li>
                                     <li><a href="{{ route('contact') }}"> Contact </a></li>
                             @endif
                         </ul>
@@ -33,16 +31,13 @@
                             <ul class="menu-overflow">
                                 @if (Auth::user())
                                     <li><a href="{{ route('home.index') }}"> Home </a></li>
-                                @else
-                                    <li><a href="{{ route('homepage') }}"> Home </a></li>
-                                @endif
-                                <li><a href="{{ route('about') }}"> About </a></li>
-                                @if (Auth::user())
+                                    <li><a href="{{ route('home.about') }}"> About </a></li>
                                     <li><a href="{{ route('contact.customer') }}"> Contact </a></li>
                                 @else
+                                    <li><a href="{{ route('homepage') }}"> Home </a></li>
+                                    <li><a href="{{ route('about') }}"> About </a></li>
                                     <li><a href="{{ route('contact') }}"> Contact </a></li>
                                 @endif
-
                             </ul>
                         </nav>
                     </div>

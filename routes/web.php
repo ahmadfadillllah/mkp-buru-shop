@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriProdukController;
@@ -48,17 +50,22 @@ Route::post('/register/post', [AuthController::class, 'registerpost'])->name('re
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth', 'checkRole:customer,admin,penjual']], function(){
+
+
+
     Route::get('/customer/homepage',[HomeController::class, 'index'])->name('home.index');
+    Route::get('/customer/about',[HomeController::class, 'aboutcustomer'])->name('home.about');
     Route::get('/customer/contact',[ContactController::class, 'contact'])->name('contact.customer');
-    Route::get('/customer/contact/post',[ContactController::class, 'contactpost'])->name('contact.post');
+    Route::post('/customer/contact/post',[ContactController::class, 'contactpost'])->name('contact.post');
 
-    Route::get('/dashboard/settings', [SettingsController::class, 'index'])->name('settings.index');
-    Route::post('/dashboard/settings/changepassword', [SettingsController::class, 'changepassword'])->name('settings.changepassword');
-    Route::post('/dashboard/settings/changeavatar', [SettingsController::class, 'changeavatar'])->name('settings.changeavatar');
-    Route::post('/dashboard/settings/changeprofile', [SettingsController::class, 'changeprofile'])->name('settings.changeprofile');
-});
+    Route::get('/cart',[CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/update',[CartController::class, 'update'])->name('cart.update');
 
-Route::group(['middleware' => ['auth', 'checkRole:admin']], function(){
+    Route::get('/checkout',[CheckoutController::class, 'index'])->name('checkout.index');
+
+    Route::get('/customer/homepage/addcart/{id}',[HomeController::class, 'addcart'])->name('home.addcart');
+    Route::get('/customer/homepage/delete/{id}',[HomeController::class, 'delete'])->name('home.delete');
+
     Route::get('/dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index');
 
     Route::get('/dashboard/kategori/produk', [KategoriProdukController::class, 'index'])->name('kategoriproduk.index');
