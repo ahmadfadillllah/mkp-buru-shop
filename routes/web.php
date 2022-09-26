@@ -64,15 +64,17 @@ Route::group(['middleware' => ['auth', 'checkRole:customer,admin,penjual']], fun
     Route::get('/customer/contact',[ContactController::class, 'contact'])->name('contact.customer');
     Route::post('/customer/contact/post',[ContactController::class, 'contactpost'])->name('contact.post');
 
-    Route::get('/cart',[CartController::class, 'index'])->name('cart.index');
-    Route::post('/cart/update',[CartController::class, 'update'])->name('cart.update');
+    Route::get('/customer/lihat-pesanan',[PesananController::class, 'show'])->name('pesanan.show');
 
-    Route::get('/checkout',[CheckoutController::class, 'index'])->name('checkout.index');
-    Route::post('/checkout/cod',[CheckoutController::class, 'cod'])->name('checkout.cod');
-    Route::post('/checkout/transfer',[CheckoutController::class, 'transfer'])->name('checkout.transfer');
+    Route::get('/customer/cart',[CartController::class, 'index'])->name('cart.index');
+    Route::post('/customer/cart/update',[CartController::class, 'update'])->name('cart.update');
 
-    Route::get('/customer/homepage/addcart/{id}',[HomeController::class, 'addcart'])->name('home.addcart');
-    Route::get('/customer/homepage/delete/{id}',[HomeController::class, 'delete'])->name('home.delete');
+    Route::get('/customer/checkout',[CheckoutController::class, 'index'])->name('checkout.index');
+    Route::post('/customer/checkout/cod',[CheckoutController::class, 'cod'])->name('checkout.cod');
+    Route::post('/customer/checkout/transfer',[CheckoutController::class, 'transfer'])->name('checkout.transfer');
+
+    Route::get('/customer/customer/homepage/addcart/{id}',[HomeController::class, 'addcart'])->name('home.addcart');
+    Route::get('/customer/customer/homepage/delete/{id}',[HomeController::class, 'delete'])->name('home.delete');
 
     Route::get('/dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index');
 

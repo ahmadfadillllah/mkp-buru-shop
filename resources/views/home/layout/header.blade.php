@@ -53,6 +53,7 @@
                     <ul>
                         <li><a href="{{ route('settings.index') }}">Profile </a></li>
                         <li><a href="{{ route('logout') }}">Logout </a></li>
+                        <li><a href="{{ route('pesanan.show') }}">Lihat Pesanan </a></li>
                     </ul>
                     @else
                     <ul>
