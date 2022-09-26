@@ -64,7 +64,7 @@
                 </div>
                 <div class="furniture-search">
                     <form action="#">
-                        <input placeholder="I am Searching for . . ." type="text">
+                        <input placeholder="Cari Produk..." type="text">
                         <button>
                             <i class="ti-search"></i>
                         </button>

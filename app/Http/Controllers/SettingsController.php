@@ -71,6 +71,11 @@ class SettingsController extends Controller
         $user->name = $request->name;
         $user->nohp = $request->nohp;
         $user->alamat = $request->alamat;
+        $user->provinsi_id = $request->provinsi_id;
+        $user->kota_id = $request->kota_id;
+        $user->kecamatan_id = $request->kecamatan_id;
+        $user->kelurahan_id = $request->kelurahan_id;
+        $user->zipcode = $request->zipcode;
         $user->save();
 
         if($user){

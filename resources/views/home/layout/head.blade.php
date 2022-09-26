@@ -5,6 +5,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{ config('app.name') }} - Homepage</title>
     <meta name="description" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script type="text/javascript"
+      src="https://app.sandbox.midtrans.com/snap/snap.js"
+      data-client-key="SB-Mid-client-YCHtULs46ydSA7tV"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('home') }}/assets/img/favicon.png">

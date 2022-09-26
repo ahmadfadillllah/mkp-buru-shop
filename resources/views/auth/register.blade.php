@@ -31,6 +31,41 @@
                                             <input type="number" class="form-control" name="nohp" placeholder="No. Handphone">
                                         </div>
                                         <div class="mb-3">
+                                        @php
+                                            $provinces = new \App\Http\Controllers\DependantDropdownController;
+                                            $provinces= $provinces->provinces();
+                                        @endphp
+                                            <label for="userEmail" class="form-label">Provinsi</label>
+                                            <select class="form-control" name="provinsi_id" id="provinsi" required>
+                                                <option>==Pilih Salah Satu==</option>
+                                                @foreach ($provinces as $item)
+                                                <option value="{{ $item->id ?? '' }}">{{ $item->name ?? '' }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="userEmail" class="form-label">Kota / Kabupaten</label>
+                                            <select class="form-control" name="kota_id" id="kota" required>
+                                                <option>==Pilih Salah Satu==</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="userEmail" class="form-label">Kecamatan</label>
+                                            <select class="form-control" name="kecamatan_id" id="kecamatan" required>
+                                                <option>==Pilih Salah Satu==</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="userEmail" class="form-label">Kelurahan</label>
+                                            <select class="form-control" name="kelurahan_id" id="desa" required>
+                                                <option>==Pilih Salah Satu==</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="userEmail" class="form-label">Zip Code</label>
+                                            <input type="text" class="form-control" name="zipcode" placeholder="Zip Code">
+                                        </div>
+                                        <div class="mb-3">
                                             <label for="userEmail" class="form-label">Alamat Lengkap</label>
                                             <input type="text" class="form-control" name="alamat" placeholder="Alamat Lengkap">
                                         </div>

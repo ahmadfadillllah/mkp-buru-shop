@@ -17,11 +17,6 @@ class CreatePesananTable extends Migration
             $table->id();
             $table->unsignedBigInteger('cart_id');
             $table->unsignedBigInteger('user_id');
-            $table->string('provinsi');
-            $table->string('kota');
-            $table->string('kecamatan');
-            $table->string('kelurahan');
-            $table->string('postcode');
             $table->string('metode_pembayaran');
             $table->timestamps();
 
