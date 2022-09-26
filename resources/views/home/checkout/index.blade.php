@@ -178,7 +178,7 @@
             var headers = { "X-CSRF-TOKEN": $('input[name="_token"]').val()};
             $.ajax({
                 type: "POST",
-                url: '{{route("checkout.transfer")}}',
+                url: "{{ route('checkout.transfer') }}",
                 data: data,
                 headers: headers,
                 success: function(data, status) {

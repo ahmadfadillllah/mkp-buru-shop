@@ -55,7 +55,7 @@
             @endif
             @if (Auth::user()->role == 'penjual')
                 <li class="nav-item">
-                    <a href="javascript:void(0);" class="nav-link">
+                    <a href="{{ route('pesanan.index') }}" class="nav-link">
                         <i class="link-icon" data-feather="feather"></i>
                         <span class="link-title">Lihat Pesanan</span>
                     </a>

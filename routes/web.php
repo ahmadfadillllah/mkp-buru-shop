@@ -13,6 +13,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DependantDropdownController;
 use App\Http\Controllers\OngkirController;
+use App\Http\Controllers\PesananController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -86,6 +87,11 @@ Route::group(['middleware' => ['auth', 'checkRole:customer,admin,penjual']], fun
     Route::post('/dashboard/produk/insert', [ProdukController::class, 'insert'])->name('produk.insert');
     Route::get('/dashboard/produk/update/{id}', [ProdukController::class, 'update'])->name('produk.update');
     Route::get('/dashboard/produk/delete/{id}', [ProdukController::class, 'delete'])->name('produk.delete');
+
+    Route::get('/dashboard/pesanan', [PesananController::class, 'index'])->name('pesanan.index');
+    Route::post('/dashboard/pesanan/konfirmasi-pesanan',[PesananController::class, 'konfirmasiPesanan'])->name('konfirmasi-pesanan');
+    Route::post('/dashboard/pesanan/dalam-perjalanan',[PesananController::class, 'perjalanan'])->name('dalam-perjalanan');
+    Route::post('/dashboard/pesanan/selesai',[PesananController::class, 'pesananSelesai'])->name('selesai');
 
     Route::get('/dashboard/akun', [AkunController::class, 'index'])->name('akun.index');
     Route::post('/dashboard/akun/update/{id}', [AkunController::class, 'update'])->name('akun.update');

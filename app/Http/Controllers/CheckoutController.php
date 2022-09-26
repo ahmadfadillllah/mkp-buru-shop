@@ -21,7 +21,7 @@ class CheckoutController extends Controller
 
         $cartById = Cart::join('users', 'cart.user_id','users.id')
         ->join('produk', 'cart.produk_id','produk.id')
-        ->select('cart.id', 'cart.user_id', 'cart.status' ,'produk.gambarproduk1', 'produk.namaproduk', 'produk.hargaproduk', 'cart.quantity')
+        ->select('cart.id as cart_id','produk.gambarproduk1', 'produk.namaproduk', 'produk.hargaproduk', 'cart.quantity')
         ->where('cart.user_id', '=', Auth::user()->id)->where('status','Belum Dipesan')->get()->pluck('cart_id');
 
         if($cart->isEmpty()){
@@ -71,7 +71,7 @@ class CheckoutController extends Controller
                 $cart->status = 'Sudah Dipesan';
                     Pesanan::insert([
                         'cart_id' => $request->cart_id[$key],
-                        'user_id' => $request->user_id[$key],
+                        'user_id' => Auth::user()->id,
                         'metode_pembayaran' => 'COD'
                     ]);
                 $cart->save();
@@ -85,16 +85,17 @@ class CheckoutController extends Controller
     public function transfer(Request $request)
     {
         try {
-            foreach($request->cart_id as $key=>$value){
-                $cart = Cart::find($request->cart_id[$key]);
+            foreach($request->idcart as $key=>$value){
+                $cart = Cart::find($request->idcart[$key]);
                 $cart->status = 'Sudah Dipesan';
-                    Pesanan::insert([
-                        'cart_id' => $request->cart_id[$key],
-                        'user_id' => $request->user_id[$key],
-                        'metode_pembayaran' => 'TRANSFER'
-                    ]);
+                Pesanan::insert([
+                    'cart_id' => $request->cart_id[$key],
+                    'user_id' => $request->user_id[$key],
+                    'metode_pembayaran' => 'TRANSFER'
+                ]);
                 $cart->save();
             }
+
             return json_encode([
                 'status' => 'success',
                 'kode' => 200,
