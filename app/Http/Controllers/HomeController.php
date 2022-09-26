@@ -33,6 +33,8 @@ class HomeController extends Controller
         )->get();
         $kategoriproduk = KategoriProduk::all();
 
+        // $user = User::first();
+
         return view('home.homepage', compact('produk', 'kategoriproduk'));
     }
 
@@ -66,7 +68,10 @@ class HomeController extends Controller
 
         $total = $item->sum('total_harga');
 
-        return view('home.index', compact('produk', 'kategoriproduk', 'cart', 'total'));
+        $user = User::get();
+        // dd($user);
+
+        return view('home.index', compact('produk', 'kategoriproduk', 'cart', 'total','user'));
     }
 
     public function addcart(Request $request,$id)
@@ -122,6 +127,7 @@ class HomeController extends Controller
         ->where('cart.status', '=', 'Belum Dipesan')->where('cart.user_id', '=', Auth::user()->id)->get();
 
         $total = $item->sum('total_harga');
+
 
         return view('home.customer.about', compact('cart', 'total'));
     }

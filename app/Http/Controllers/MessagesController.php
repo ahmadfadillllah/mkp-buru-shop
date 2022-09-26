@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Chatify\Http\Controllers;
 
 use App\Models\ChMessage;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request;    
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Response;
@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request as FacadesRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-class ChatController extends Controller
+class MessagesController extends Controller
 {
     protected $perPage = 30;
     protected $messengerFallbackColor = '#2180f3';

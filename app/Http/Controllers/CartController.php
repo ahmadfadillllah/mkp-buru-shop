@@ -12,6 +12,7 @@ class CartController extends Controller
     //
     public function index()
     {
+        
         $cart = Cart::join('users', 'cart.user_id','users.id')
         ->join('produk', 'cart.produk_id','produk.id')
         ->select('cart.id', 'cart.user_id', 'cart.status' ,'produk.gambarproduk1', 'produk.namaproduk', 'produk.hargaproduk', 'cart.quantity')

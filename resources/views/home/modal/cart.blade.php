@@ -1,7 +1,7 @@
 <div class="header-cart">
     <a class="icon-cart-furniture" href="#">
         <i class="ti-shopping-cart"></i>
-        <span class="shop-count-furniture green">{{ count($cart) }}</span>
+        <span class="shop-count-furniture green">{{ count($cart) }}</span>a
     </a>
     <ul class="cart-dropdown">
         @foreach ($cart as $c)

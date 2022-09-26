@@ -11,6 +11,7 @@ use App\Http\Controllers\KategoriProdukController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\MessagesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,7 +53,6 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::group(['middleware' => ['auth', 'checkRole:customer,admin,penjual']], function(){
 
 
-
     Route::get('/customer/homepage',[HomeController::class, 'index'])->name('home.index');
     Route::get('/customer/about',[HomeController::class, 'aboutcustomer'])->name('home.about');
     Route::get('/customer/contact',[ContactController::class, 'contact'])->name('contact.customer');
@@ -82,6 +82,7 @@ Route::group(['middleware' => ['auth', 'checkRole:customer,admin,penjual']], fun
     Route::post('/dashboard/akun/changepassword/{id}', [AkunController::class, 'changepassword'])->name('akun.changepassword');
 
     Route::get('/dashboard/chat', [ChatController::class, 'index'])->name('chat.index');
+    Route::get('/dashboard/chat/{id}', [ChatController::class, 'index'])->name('chat.index');
     Route::get('/dashboard/contact', [ContactController::class, 'index'])->name('contact.index');
     Route::get('/dashboard/contact/delete', [ContactController::class, 'delete'])->name('contact.delete');
 
