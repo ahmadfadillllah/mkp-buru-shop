@@ -16,64 +16,65 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12 col-12">
-                <form action="#">
-                    <div class="checkbox-form">
-                        <h3>Billing Details</h3>
-                        <p style="color: red">Harap mengisi dengan benar, jika salah diluar tanggung jawab kami!</p>
-                        <br>
-                        <div class="row">
+                <div class="checkbox-form">
+                    <h3>Billing Details</h3>
+                    <p style="color: red">Harap mengisi dengan benar, jika salah diluar tanggung jawab kami!</p>
+                    <p>Data ini dapat diubah di halaman profile.</p>
+                    <br>
+                    <div class="row">
 
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>Email Address <span class="required">*</span></label>
-                                    <input type="email" name="email" value="{{ Auth::user()->email }}" readonly>
-                                </div>
+                        <div class="col-md-6">
+                            <div class="checkout-form-list">
+                                <label>Email Address <span class="required">*</span></label>
+                                <input type="email" name="email" value="{{ Auth::user()->email }}" readonly>
                             </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>Nama <span class="required">*</span></label>
-                                    <input type="text" name="name" value="{{ Auth::user()->name }}" readonly>
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="checkout-form-list">
+                                <label>Nama <span class="required">*</span></label>
+                                <input type="text" name="name" value="{{ Auth::user()->name }}" readonly>
                             </div>
-                            <div class="col-md-12">
-                                <div class="checkout-form-list">
-                                    <label>No. Handphone<span class="required">*</span></label>
-                                    <input type="number" name="nohp" value="{{ Auth::user()->nohp }}" readonly>
-                                </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="checkout-form-list">
+                                <label>No. Handphone<span class="required">*</span></label>
+                                <input type="number" name="nohp" value="{{ Auth::user()->nohp }}" readonly>
                             </div>
-                            <div class="col-md-12">
-                                <div class="checkout-form-list">
-                                    <label>Alamat <span class="required">*</span></label>
-                                    <input type="text" name="alamat" value="{{ Auth::user()->alamat }}" readonly>
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="checkout-form-list">
+                                <label>Provinsi<span class="required">*</span></label>
+                                <input type="text" name="provinsi" value="{{ Auth::user()->provinsi->name }}" readonly>
                             </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>Provinsi<span class="required">*</span></label>
-                                    <input type="text" name="provinsi">
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="checkout-form-list">
+                                <label>Kota / Kabupaten<span class="required">*</span></label>
+                                <input type="text" name="kota" value="{{ Auth::user()->kota->name }}" readonly>
                             </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>Kota/Kabupaten<span class="required">*</span></label>
-                                    <input type="text" name="kota">
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="checkout-form-list">
+                                <label>Kecamatan<span class="required">*</span></label>
+                                <input type="text" name="kecamatan" value="{{ Auth::user()->kecamatan->name }}"
+                                    readonly>
                             </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>Kecamatan<span class="required">*</span></label>
-                                    <input type="text" name="kecamatan">
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="checkout-form-list">
+                                <label>Kelurahan<span class="required">*</span></label>
+                                <input type="text" name="kelurahan" value="{{ Auth::user()->kelurahan->name }}"
+                                    readonly>
                             </div>
-                            <div class="col-md-6">
-                                <div class="checkout-form-list">
-                                    <label>Postcode / Zip <span class="required">*</span></label>
-                                    <input type="number" name="postcode" required>
-                                </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="checkout-form-list">
+                                <label>Postcode / Zip <span class="required">*</span></label>
+                                <input type="number" name="postcode" value="{{ Auth::user()->zipcode }}" readonly>
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
             <div class="col-lg-6 col-md-12 col-12">
                 <div class="your-order">
@@ -100,9 +101,14 @@
                                 @endforeach
                             </tbody>
                             <tfoot>
+                                <tr class="cart_item">
+                                    <th>Ongkos Kirim</th>
+                                    <td><strong><span class="amount">@currency($ongkir['ongkir'])</span></strong>
+                                    </td>
+                                </tr>
                                 <tr class="order-total">
                                     <th>Order Total</th>
-                                    <td><strong><span class="amount">@currency($total)</span></strong>
+                                    <td><strong><span class="amount">@currency($grand_total)</span></strong>
                                     </td>
                                 </tr>
                             </tfoot>
@@ -120,7 +126,7 @@
                                     <div id="payment-1" class="panel-collapse collapse" data-bs-parent="#faq">
                                         <div class="panel-body">
                                             <div class="order-button-payment">
-                                                <input type="submit" value="Bayar" />
+                                                <input type="submit" id="pay-button" value="Bayar" />
                                             </div>
                                         </div>
                                     </div>
@@ -132,11 +138,16 @@
                                         </h5>
                                     </div>
                                     <div id="payment-2" class="panel-collapse collapse" data-bs-parent="#faq">
-                                        <div class="panel-body">
-                                            <div class="order-button-payment">
-                                                <input type="submit" value="Pilih" />
+                                        <form action="{{ route('checkout.cod') }}" method="post">
+                                            @csrf
+                                            <div class="panel-body">
+                                                <div class="order-button-payment">
+                                                    <input type="text" name="cart_id[]" value="{{ $c->id }}" hidden>
+                                                    <input type="text" name="user_id[]" value="{{ Auth::user()->id }}" hidden>
+                                                    <input type="submit" value="Pilih" />
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -147,4 +158,72 @@
         </div>
     </div>
 </div>
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+
+    var payButton = document.getElementById('pay-button');
+    payButton.addEventListener('click', function () {
+      // Trigger snap popup. @TODO: Replace TRANSACTIO  N_TOKEN_HERE with your transaction token
+      window.snap.pay('{{ $token }}', {
+        onSuccess: function(result){
+          /* You may add your own implementation here */
+        //   alert("payment success!"); console.log(result);
+            let dataId = @json($cartById);
+            console.log(dataId);
+            var status = "Sudah Dipesan"
+            var data = { status: status,idcart :dataId };
+            console.log(data);
+            var dataType = "json";
+            var headers = { "X-CSRF-TOKEN": $('input[name="_token"]').val()};
+            $.ajax({
+                type: "POST",
+                url: "{{ route('checkout.transfer') }}",
+                data: data,
+                headers: headers,
+                success: function(data, status) {
+                    var data = data;
+                    Swal.fire(
+                    'Sukses',
+                    'Pembayaran berhasil,Silahkan Cek status Pesanan Anda anda',
+                    'success'
+                    )
+                console.log(data);
+                window.location = "/customer/homepage";
+                },
+                dataType: dataType
+            });
+
+        },
+        onPending: function(result){
+          /* You may add your own implementation here */
+        //   alert("wating your payment!"); console.log(result);
+        Swal.fire(
+                'Upps!',
+                'Pembayaran dipending',
+                'info'
+                )
+        },
+        onError: function(result){
+          /* You may add your own implementation here */
+        //   alert("payment failed!"); console.log(result);
+          Swal.fire(
+                'Gagal',
+                'Pembayaran gagal',
+                'warning'
+                )
+        },
+        onClose: function(){
+          /* You may add your own implementation here */
+        //   alert('you closed the popup without finishing the payment');
+        Swal.fire(
+                'Upps!',
+                'Pembayaran ditunda',
+                'warning'
+                )
+        }
+      })
+    });
+</script>
+
 @include('home.layout.footer')

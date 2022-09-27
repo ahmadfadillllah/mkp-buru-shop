@@ -75,7 +75,7 @@
                                 </div>
                             </div>
                             <div class="funiture-product-content text-center">
-                                <h4><a href="product-details.html">{{ $p->namaproduk }}</a></h4>
+                                <h4><a href="javascript:void(0);">{{ $p->namaproduk }}</a></h4>
                                 <span>@currency($p->hargaproduk)</span>
                             </div>
                         </div>

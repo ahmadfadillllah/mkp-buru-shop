@@ -13,11 +13,6 @@ class Pesanan extends Model
     protected $fillable = [
         'cart_id',
         'user_id',
-        'provinsi',
-        'kota',
-        'kecamatan',
-        'kelurahan',
-        'postcode',
         'metode_pembayaran'
     ];
 }

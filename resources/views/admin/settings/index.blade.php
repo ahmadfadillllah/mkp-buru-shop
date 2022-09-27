@@ -55,6 +55,26 @@
                         <p class="text-muted">{{ Auth::user()->email }}</p>
                     </div>
                     <div class="mt-3">
+                        <label class="tx-11 fw-bolder mb-0 text-uppercase">Provinsi:</label>
+                        <p class="text-muted">{{  Auth::user()->provinsi->name }}</p>
+                    </div>
+                    <div class="mt-3">
+                        <label class="tx-11 fw-bolder mb-0 text-uppercase">Kota/Kabupaten:</label>
+                        <p class="text-muted">{{  Auth::user()->kota->name }}</p>
+                    </div>
+                    <div class="mt-3">
+                        <label class="tx-11 fw-bolder mb-0 text-uppercase">Kecamatan:</label>
+                        <p class="text-muted">{{  Auth::user()->kecamatan->name }}</p>
+                    </div>
+                    <div class="mt-3">
+                        <label class="tx-11 fw-bolder mb-0 text-uppercase">Kelurahan:</label>
+                        <p class="text-muted">{{  Auth::user()->kelurahan->name }}</p>
+                    </div>
+                    <div class="mt-3">
+                        <label class="tx-11 fw-bolder mb-0 text-uppercase">Zip Code:</label>
+                        <p class="text-muted">{{  Auth::user()->zipcode }}</p>
+                    </div>
+                    <div class="mt-3">
                         <label class="tx-11 fw-bolder mb-0 text-uppercase">Alamat:</label>
                         <p class="text-muted">{{ Auth::user()->alamat }}</p>
                     </div>

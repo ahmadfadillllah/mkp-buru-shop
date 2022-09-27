@@ -11,6 +11,9 @@ use App\Http\Controllers\KategoriProdukController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DependantDropdownController;
+use App\Http\Controllers\OngkirController;
+use App\Http\Controllers\PesananController;
 use App\Http\Controllers\MessagesController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +36,11 @@ Route::get('/', function () {
     return redirect()->route('homepage');
 })->name('home');
 
+Route::get('/provinces',[DependantDropdownController::class, 'provinces'])->name('provinces');
+    Route::get('/cities',[DependantDropdownController::class, 'cities'])->name('cities');
+    Route::get('/districts',[DependantDropdownController::class, 'districts'])->name('districts');
+    Route::get('/villages',[DependantDropdownController::class, 'villages'])->name('villages');
+
 Route::get('/homepage',[HomeController::class, 'homepage'])->name('homepage');
 Route::get('/about',[HomeController::class, 'about'])->name('about');
 Route::get('/contact',[HomeController::class, 'contact'])->name('contact');
@@ -52,21 +60,27 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth', 'checkRole:customer,admin,penjual']], function(){
 
-
     Route::get('/customer/homepage',[HomeController::class, 'index'])->name('home.index');
     Route::get('/customer/about',[HomeController::class, 'aboutcustomer'])->name('home.about');
     Route::get('/customer/contact',[ContactController::class, 'contact'])->name('contact.customer');
     Route::post('/customer/contact/post',[ContactController::class, 'contactpost'])->name('contact.post');
 
-    Route::get('/cart',[CartController::class, 'index'])->name('cart.index');
-    Route::post('/cart/update',[CartController::class, 'update'])->name('cart.update');
+    Route::get('/customer/lihat-pesanan',[PesananController::class, 'show'])->name('pesanan.show');
 
-    Route::get('/checkout',[CheckoutController::class, 'index'])->name('checkout.index');
+    Route::get('/customer/cart',[CartController::class, 'index'])->name('cart.index');
+    Route::post('/customer/cart/update',[CartController::class, 'update'])->name('cart.update');
 
-    Route::get('/customer/homepage/addcart/{id}',[HomeController::class, 'addcart'])->name('home.addcart');
-    Route::get('/customer/homepage/delete/{id}',[HomeController::class, 'delete'])->name('home.delete');
+    Route::get('/customer/checkout',[CheckoutController::class, 'index'])->name('checkout.index');
+    Route::post('/customer/checkout/cod',[CheckoutController::class, 'cod'])->name('checkout.cod');
+    Route::post('/customer/checkout/transfer',[CheckoutController::class, 'transfer'])->name('checkout.transfer');
+
+    Route::get('/customer/customer/homepage/addcart/{id}',[HomeController::class, 'addcart'])->name('home.addcart');
+    Route::get('/customer/customer/homepage/delete/{id}',[HomeController::class, 'delete'])->name('home.delete');
 
     Route::get('/dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index');
+
+    Route::get('/dashboard/ongkir', [OngkirController::class, 'index'])->name('ongkir.index');
+    Route::post('/dashboard/ongkir/update/{id}', [OngkirController::class, 'update'])->name('ongkir.update');
 
     Route::get('/dashboard/kategori/produk', [KategoriProdukController::class, 'index'])->name('kategoriproduk.index');
     Route::post('/dashboard/kategori/produk/insert', [KategoriProdukController::class, 'insert'])->name('kategoriproduk.insert');
@@ -76,6 +90,11 @@ Route::group(['middleware' => ['auth', 'checkRole:customer,admin,penjual']], fun
     Route::post('/dashboard/produk/insert', [ProdukController::class, 'insert'])->name('produk.insert');
     Route::get('/dashboard/produk/update/{id}', [ProdukController::class, 'update'])->name('produk.update');
     Route::get('/dashboard/produk/delete/{id}', [ProdukController::class, 'delete'])->name('produk.delete');
+
+    Route::get('/dashboard/pesanan', [PesananController::class, 'index'])->name('pesanan.index');
+    Route::post('/dashboard/pesanan/konfirmasi-pesanan',[PesananController::class, 'konfirmasiPesanan'])->name('konfirmasi-pesanan');
+    Route::post('/dashboard/pesanan/dalam-perjalanan',[PesananController::class, 'perjalanan'])->name('dalam-perjalanan');
+    Route::post('/dashboard/pesanan/selesai',[PesananController::class, 'pesananSelesai'])->name('selesai');
 
     Route::get('/dashboard/akun', [AkunController::class, 'index'])->name('akun.index');
     Route::post('/dashboard/akun/update/{id}', [AkunController::class, 'update'])->name('akun.update');

@@ -29,6 +29,12 @@
                         <span class="link-title">Kategori Produk</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('ongkir.index') }}" class="nav-link">
+                        <i class="link-icon" data-feather="inbox"></i>
+                        <span class="link-title">Ongkos Kirim</span>
+                    </a>
+                </li>
             @endif
             @if (Auth::user()->role == 'penjual')
                 <li class="nav-item">
@@ -49,7 +55,7 @@
             @endif
             @if (Auth::user()->role == 'penjual')
                 <li class="nav-item">
-                    <a href="javascript:void(0);" class="nav-link">
+                    <a href="{{ route('pesanan.index') }}" class="nav-link">
                         <i class="link-icon" data-feather="feather"></i>
                         <span class="link-title">Lihat Pesanan</span>
                     </a>
@@ -82,6 +88,12 @@
                 <a href="{{ route('settings.index') }}" class="nav-link">
                     <i class="link-icon" data-feather="user"></i>
                     <span class="link-title">Settings</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('home.index') }}" class="nav-link">
+                    <i class="link-icon" data-feather="home"></i>
+                    <span class="link-title">Home</span>
                 </a>
             </li>
             <li class="nav-item">

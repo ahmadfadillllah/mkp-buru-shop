@@ -24,6 +24,46 @@
                                 <input type="text" name="name" placeholder="Nama Lengkap" required>
                                 <input type="email" name="email" placeholder="Email" required>
                                 <input type="number" name="nohp" placeholder="No. Handphone" required>
+                                <div class="col-md-12">
+                                    @php
+                                    $provinces = new \App\Http\Controllers\DependantDropdownController;
+                                    $provinces= $provinces->provinces();
+                                    @endphp
+                                    <div class="country-select">
+                                        <label>Provinsi <span class="required">*</span></label>
+                                        <select name="provinsi_id" id="provinsi" required>
+                                            <option>==Pilih Salah Satu==</option>
+                                            @foreach ($provinces as $item)
+                                            <option value="{{ $item->id ?? '' }}">{{ $item->name ?? '' }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="country-select">
+                                        <label>Kota / Kabupaten <span class="required">*</span></label>
+                                        <select name="kota_id" id="kota" required>
+                                            <option>==Pilih Salah Satu==</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="country-select">
+                                        <label>Kecamatan <span class="required">*</span></label>
+                                        <select name="kecamatan_id" id="kecamatan" required>
+                                            <option>==Pilih Salah Satu==</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="country-select">
+                                        <label>Kelurahan <span class="required">*</span></label>
+                                        <select name="kelurahan_id" id="desa" required>
+                                            <option>==Pilih Salah Satu==</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <input type="number" name="zipcode" placeholder="Zipcode" required>
                                 <input type="text" name="alamat" placeholder="Alamat" required>
                                 <input type="password" name="password" placeholder="Password" required>
                                 <input type="password" name="password_confirmation" placeholder="Konfirmasi Password" required>
