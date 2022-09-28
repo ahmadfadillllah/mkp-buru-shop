@@ -44,7 +44,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:void(0);" class="nav-link">
+                    <a href="{{ route('laporan') }}" class="nav-link">
                         <i class="link-icon" data-feather="book"></i>
                         <span class="link-title">Laporan Penjualan</span>
                     </a>

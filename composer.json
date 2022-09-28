@@ -12,11 +12,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravolt/indonesia": "^0.32.0",
-<<<<<<< HEAD
-        "munafio/chatify": "^1.5"
-=======
         "midtrans/midtrans-php": "^2.5"
->>>>>>> 3bb451bda4b2742c681a2475cc863dcf5aa65f01
     },
     "require-dev": {
         "facade/ignition": "^2.5",

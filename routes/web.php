@@ -12,6 +12,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DependantDropdownController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\OngkirController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\MessagesController;
@@ -101,7 +102,7 @@ Route::group(['middleware' => ['auth', 'checkRole:customer,admin,penjual']], fun
     Route::post('/dashboard/akun/changepassword/{id}', [AkunController::class, 'changepassword'])->name('akun.changepassword');
 
     Route::get('/dashboard/chat', [ChatController::class, 'index'])->name('chat.index');
-    Route::get('/dashboard/chat/{id}', [ChatController::class, 'index'])->name('chat.index');
+    Route::get('/dashboard/chat/{id}', [ChatController::class, 'index'])->name('chat.indexbyid');
     Route::get('/dashboard/contact', [ContactController::class, 'index'])->name('contact.index');
     Route::get('/dashboard/contact/delete', [ContactController::class, 'delete'])->name('contact.delete');
 
@@ -109,5 +110,12 @@ Route::group(['middleware' => ['auth', 'checkRole:customer,admin,penjual']], fun
     Route::post('/dashboard/settings/changepassword', [SettingsController::class, 'changepassword'])->name('settings.changepassword');
     Route::post('/dashboard/settings/changeavatar', [SettingsController::class, 'changeavatar'])->name('settings.changeavatar');
     Route::post('/dashboard/settings/changeprofile', [SettingsController::class, 'changeprofile'])->name('settings.changeprofile');
+    
+    // LAPORAN
+    Route::get('/laporan', [LaporanController::class, 'laporan'])->name('laporan');
+    Route::get('/laporan-mingguan', [LaporanController::class, 'laporanMingguan'])->name('laporanMingguan');
+    Route::get('/laporan-bulanan', [LaporanController::class, 'laporanBulanan'])->name('laporanBulanan');
+    Route::get('/laporan-tahunan', [LaporanController::class, 'laporanTahunan'])->name('laporanTahunan');
+    
 });
 

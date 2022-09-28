@@ -8,7 +8,7 @@
     <nav class="page-breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Kategori Produk</li>
+            <li class="breadcrumb-item active" aria-current="page">Laporan Mingguan</li>
         </ol>
     </nav>
 
@@ -17,30 +17,56 @@
             <div class="card">
                 <div class="card-body">
                     @include('admin.notification.index')
-                    @include('admin.kategoriproduk.modal.tambah')
-                    <button type="button" class="btn btn-inverse-primary" data-bs-toggle="modal" data-bs-target="#tambahKategori" style="float: right">Tambah Kategori</button>
-                    <h6 class="card-title">Kategori Produk</h6>
+                    <form action="{{ route('laporanMingguan') }}" method="get">
+                        @csrf
+                        <div class="d-flex flex-row bd-highlight mb-3">
+                            <div class="p-2 bd-highlight">
+                                <input type="date" name="startdate" id="" class="form-control">
+                            </div>
+                            <div class="p-2 bd-highlight">
+                                <input type="date" name="enddate" class="form-control">
+                            </div>
+                            <div class="p-2 bd-highlight">
+                                <select name="status" id="" class="form-control">
+                                    <option value="">Pilih Status</option>
+                                    <option value="Belum Dipesan">Belum Dipesan</option>
+                                    <option value="Sudah Dipesan">Sudah Dipesan</option>
+                                    <option value="Sudah Dikonfirmasi">Sudah Dikonfirmasi</option>
+                                    <option value="Dalam Perjalanan">Dalam Perjalanan</option>
+                                    <option value="Pesanan Selesai">Pesanan Selesai</option>
+                                </select>
+                            </div>
+                            <div class="p-2 bd-highlight">
+                                <select name="pembayaran" id="" class="form-control">
+                                    <option value="">Pilih Metode Pembayaran</option>
+                                    <option value="COD">COD</option>
+                                    <option value="TRANSFER">TRANSFER</option>
+                                </select>
+                            </div>
+                            <div class="p-2 bd-highlight">
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                    <h6 class="card-title">Laporan Mingguan</h6>
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nama Kategori</th>
-                                    <th>Deskripsi</th>
-                                    <th>Gambar</th>
-                                    <th>Aksi</th>
+                                    <th>Nama Pemesan</th>
+                                    <th>Status</th>
+                                    <th>Metode Pembayaran</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($kategoriproduk as $kp)
-                                @include('admin.kategoriproduk.modal.edit')
-                                    <tr>
-                                        <th>{{ $loop->iteration }}</th>
-                                        <td>{{ $kp->namakategori }}</td>
-                                        <td>{{ $kp->deskripsikategori }}</td>
-                                        <td><img src="{{ asset('admin/template/assets/images/kategoriproduk') }}/{{ $kp->gambarkategori }}" alt="Gambar tidak ditemukan" style="border-radius: 80px"></td>
-                                        <td><button type="button" class="btn btn-outline-warning mb-1 mb-md-0" data-bs-toggle="modal" data-bs-target="#editKategori{{ $kp->id }}">Edit</button></td>
-                                    </tr>
+                                @foreach ($pesanan as $p)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $p->name }}</td>
+                                    <td>{{ $p->status }}</td>
+                                    <td>{{ $p->metode_pembayaran }}</td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -49,6 +75,72 @@
             </div>
         </div>
     </div>
-
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div id="container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<script>
+  Highcharts.chart('container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Laporan Mingguan'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true
+        }
+    },
+    series: [{
+        name: 'Total',
+        colorByPoint: true,
+        data: [{
+            name: 'Belum Dipesan',
+            y: {{ $belumDipesan }},
+        },  {
+            name: 'Sudah Dipesan',
+            y: {{ $sudahDipesan }}
+        },  {
+            name: 'Pesanan Dikonfirmasi',
+            y: {{ $sudahDikonfirmasi }}
+        }, {
+            name: 'Pesanan Dalam Perjalanan',
+            y: {{ $dalamPerjalanan }}
+        }, {
+            name: 'Pesanan Selesai',
+            y: {{ $pesananSelesai }}
+        }]
+    }]
+});
+          
+</script>
+
 @include('admin.layout.footer')
