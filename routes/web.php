@@ -110,12 +110,12 @@ Route::group(['middleware' => ['auth', 'checkRole:customer,admin,penjual']], fun
     Route::post('/dashboard/settings/changepassword', [SettingsController::class, 'changepassword'])->name('settings.changepassword');
     Route::post('/dashboard/settings/changeavatar', [SettingsController::class, 'changeavatar'])->name('settings.changeavatar');
     Route::post('/dashboard/settings/changeprofile', [SettingsController::class, 'changeprofile'])->name('settings.changeprofile');
-    
+
     // LAPORAN
     Route::get('/laporan', [LaporanController::class, 'laporan'])->name('laporan');
     Route::get('/laporan-mingguan', [LaporanController::class, 'laporanMingguan'])->name('laporanMingguan');
     Route::get('/laporan-bulanan', [LaporanController::class, 'laporanBulanan'])->name('laporanBulanan');
     Route::get('/laporan-tahunan', [LaporanController::class, 'laporanTahunan'])->name('laporanTahunan');
-    
+
 });
 

@@ -163,7 +163,7 @@ class HomeController extends Controller
     public function registercustomerpost(Request $request)
     {
         $request->validate([
-            'email' => ['required', 'email'],
+            'email' => ['required', 'email', 'unique:users,email'],
             'name' => ['required'],
             'nohp' => ['required', 'max:13'],
             'alamat' => ['required'],
