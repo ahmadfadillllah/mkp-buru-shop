@@ -34,8 +34,11 @@ class HomeController extends Controller
         $kategoriproduk = KategoriProduk::all();
 
         // $user = User::first();
-
-        return view('home.homepage', compact('produk', 'kategoriproduk'));
+        if(!Auth::user()){
+            return view('home.homepage', compact('produk', 'kategoriproduk'));
+        }else{
+            return redirect()->route('home.index');
+        }
     }
 
     public function index()
