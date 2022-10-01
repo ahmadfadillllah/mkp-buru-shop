@@ -75,14 +75,12 @@
                     </a>
                 </li>
             @endif
-            @if (Auth::user()->role == 'admin' or Auth::user()->role == 'penjual')
                 <li class="nav-item">
                     <a href="{{ route('chat.index') }}" class="nav-link">
                         <i class="link-icon" data-feather="message-square"></i>
                         <span class="link-title">Chat</span>
                     </a>
                 </li>
-            @endif
             <li class="nav-item nav-category">Pages</li>
             <li class="nav-item">
                 <a href="{{ route('settings.index') }}" class="nav-link">
