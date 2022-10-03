@@ -25,6 +25,9 @@
                                     <a class="animate-top" title="Tambah ke keranjang" href="#">
                                         <i class="pe-7s-cart"></i>
                                     </a>
+                                    <a class="animate-bottom" title="Beli Sekarang" href="{{ route('buynow.index', $p->id) }}">
+                                        <i class="pe-7s-shopbag"></i>
+                                    </a>
                                     @endif
                                     <a class="animate-right" title="Quick View" data-bs-toggle="modal"
                                         data-bs-target="#detailProduk{{ $p->id }}" href="detailProduk{{ $p->id }}">
