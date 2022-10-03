@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <div class="footer-widget mb-30">
-                    <h3 class="footer-widget-title-5">Contact Info</h3>
+                    <h3 class="footer-widget-title-5">Info Kontak</h3>
                     <div class="footer-info-wrapper-3">
                         <div class="footer-address-furniture">
                             <div class="footer-info-icon3">

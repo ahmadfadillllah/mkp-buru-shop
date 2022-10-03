@@ -195,6 +195,45 @@ class HomeController extends Controller
             return redirect()->route('logincustomer')->with('success', 'Anda berhasil registrasi, silahkan login');
         }
 
-        return redirect()->route('registercustomer')->with('info', 'Anda gagal registrasi, silahkan masukkan data kembali');
+        return redirect()->route('registercustomer')->with('info', 'Anda gagal registrasi, silahkan masukkan data kembali')->withInput();
+    }
+
+    public function toko($id)
+    {
+        $produk = Produk::join('users', 'users.id', 'produk.user_id')
+        ->select(
+        'produk.id',
+        'produk.user_id',
+        'users.name',
+        'produk.kategoriproduk',
+        'produk.namaproduk',
+        'produk.hargaproduk',
+        'produk.stokproduk',
+        'produk.deskripsiproduk',
+        'produk.gambarproduk1',
+        'produk.gambarproduk2',
+        'produk.gambarproduk3',
+        'produk.gambarproduk4',
+        )->where('produk.user_id', $id)->get();
+
+        $nama = Produk::join('users', 'users.id', 'produk.user_id')
+        ->select(
+        'users.name',
+        )->where('produk.user_id', $id)->first();
+
+        $cart = Cart::join('users', 'cart.user_id','users.id')
+        ->join('produk', 'cart.produk_id','produk.id')
+        ->select('cart.id', 'cart.user_id', 'cart.status' ,'produk.gambarproduk1', 'produk.namaproduk', 'produk.hargaproduk', 'cart.quantity')
+        ->where('cart.status', '=', 'Belum Dipesan')->where('cart.user_id', '=', Auth::user()->id)->get();
+
+        $item = Cart::join('produk', 'cart.produk_id','produk.id')
+        ->select(DB::raw('produk.hargaproduk * cart.quantity as total_harga'))
+        ->where('cart.status', '=', 'Belum Dipesan')->where('cart.user_id', '=', Auth::user()->id)->get();
+
+        $total = $item->sum('total_harga');
+
+        $user = User::get();
+
+        return view('home.toko.index', compact('cart','cart', 'total', 'produk', 'user', 'nama'));
     }
 }

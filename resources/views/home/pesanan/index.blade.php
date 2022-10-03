@@ -33,7 +33,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($cart as $c)
+                                @foreach ($pesanan as $c)
                                 <input type="text" name="id[]" value="{{ $c->id }}" hidden>
                                     <tr>
                                         <td class="product-name"><a href="javascript:void(0);">{{ $c->status }}</a></td>

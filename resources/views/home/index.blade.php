@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="ms-auto col-lg-6">
                         <div class="furniture-content fadeinup-animated">
-                            <h2 class="animated">Comfort <br>Collection.</h2>
+                            <h2 class="animated">Daftar <br>Koleksi.</h2>
                         </div>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="ms-auto col-lg-6">
                         <div class="furniture-content fadeinup-animated">
-                            <h2 class="animated">Comfort <br>Collection.</h2>
+                            <h2 class="animated">Daftar <br>Koleksi.</h2>
                         </div>
                     </div>
                 </div>
@@ -60,8 +60,11 @@
                                 </a>
                                 <div class="product-action">
                                     @if (Auth::user())
-                                    <a class="animate-left" title="Add To Cart" href="{{ route('home.addcart', $p->id) }}">
+                                    <a class="animate-left" title="Tambah ke keranjang" href="{{ route('home.addcart', $p->id) }}">
                                         <i class="pe-7s-cart"></i>
+                                    </a>
+                                    <a class="animate-bottom" title="Beli Sekarang" href="{{ route('buynow.index', $p->id) }}">
+                                        <i class="pe-7s-shopbag"></i>
                                     </a>
                                     @endif
                                     <a class="animate-right" title="Quick View" data-bs-toggle="modal"
@@ -92,7 +95,7 @@
                     <img src="{{ asset('home') }}/assets/img/icon-img/26.png" alt="">
                 </div>
                 <div class="services-content">
-                    <h4>Free Shippig</h4>
+                    <h4>Bebas Bertanya</h4>
                 </div>
             </div>
             <div class="single-services mb-40">
@@ -108,7 +111,7 @@
                     <img src="{{ asset('home') }}/assets/img/icon-img/28.png" alt="">
                 </div>
                 <div class="services-content">
-                    <h4>Secure Payments</h4>
+                    <h4>Pembayaran Aman</h4>
                 </div>
             </div>
         </div>

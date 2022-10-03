@@ -20,15 +20,15 @@
                                         @csrf
                                         <div class="mb-3">
                                             <label for="userEmail" class="form-label">Nama Lengkap</label>
-                                            <input type="text" class="form-control" name="name" placeholder="Nama Lengkap">
+                                            <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Nama Lengkap">
                                         </div>
                                         <div class="mb-3">
                                             <label for="userEmail" class="form-label">Email address</label>
-                                            <input type="email" class="form-control" name="email" placeholder="Email">
+                                            <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
                                         </div>
                                         <div class="mb-3">
                                             <label for="userEmail" class="form-label">No. Handphone</label>
-                                            <input type="number" class="form-control" name="nohp" placeholder="No. Handphone">
+                                            <input type="number" class="form-control" name="nohp" value="{{ old('nohp') }}" placeholder="No. Handphone">
                                         </div>
                                         <div class="mb-3">
                                         @php
@@ -63,11 +63,11 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="userEmail" class="form-label">Zip Code</label>
-                                            <input type="text" class="form-control" name="zipcode" placeholder="Zip Code">
+                                            <input type="text" class="form-control" name="zipcode" placeholder="Zip Code" value="{{ old('zipcode') }}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="userEmail" class="form-label">Alamat Lengkap</label>
-                                            <input type="text" class="form-control" name="alamat" placeholder="Alamat Lengkap">
+                                            <input type="text" class="form-control" name="alamat" placeholder="Alamat Lengkap" value="{{ old('alamat') }}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="userPassword" class="form-label">Password</label>

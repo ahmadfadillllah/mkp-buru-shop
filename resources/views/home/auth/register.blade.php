@@ -3,10 +3,10 @@
 <div class="breadcrumb-area pt-205 pb-210" style="background-image: url(https://template.hasthemes.com/ezone/ezone/assets/img/bg/breadcrumb.jpg)">
     <div class="container">
         <div class="breadcrumb-content text-center">
-            <h2>register</h2>
+            <h2>daftar</h2>
             <ul>
                 <li><a href="#">home</a></li>
-                <li> register </li>
+                <li> daftar </li>
             </ul>
         </div>
     </div>
@@ -21,9 +21,9 @@
                         <div class="login-form">
                             <form action="{{ route('registercustomer.post') }}" method="post">
                                 @csrf
-                                <input type="text" name="name" placeholder="Nama Lengkap" required>
-                                <input type="email" name="email" placeholder="Email" required>
-                                <input type="number" name="nohp" placeholder="No. Handphone" required>
+                                <input type="text" name="name" placeholder="Nama Lengkap" value="{{ old('name') }}" required>
+                                <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
+                                <input type="number" name="nohp" placeholder="No. Handphone" value="{{ old('nohp') }}" required>
                                 <div class="col-md-12">
                                     @php
                                     $provinces = new \App\Http\Controllers\DependantDropdownController;
@@ -63,14 +63,14 @@
                                         </select>
                                     </div>
                                 </div>
-                                <input type="number" name="zipcode" placeholder="Zipcode" required>
-                                <input type="text" name="alamat" placeholder="Alamat" required>
+                                <input type="number" name="zipcode" placeholder="Zipcode" value="{{ old('zipcode') }}" required>
+                                <input type="text" name="alamat" placeholder="Alamat" value="{{ old('alamat') }}" required>
                                 <input type="password" name="password" placeholder="Password" required>
                                 <input type="password" name="password_confirmation" placeholder="Konfirmasi Password" required>
                                 <div class="button-box">
                                     <div class="login-toggle-btn">
                                         <input type="checkbox">
-                                        <label>Remember me</label>
+                                        <label>Ingat saya</label>
                                         <a href="{{ route('logincustomer') }}">Sudah punya akun? login</a>
                                     </div>
                                     <button type="submit" class="default-btn floatright">Registrasi</button>

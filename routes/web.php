@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BuyNowController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CheckoutController;
@@ -66,17 +67,23 @@ Route::group(['middleware' => ['auth', 'checkRole:customer,admin,penjual']], fun
     Route::get('/customer/contact',[ContactController::class, 'contact'])->name('contact.customer');
     Route::post('/customer/contact/post',[ContactController::class, 'contactpost'])->name('contact.post');
 
+    Route::get('/customer/toko/{id}',[HomeController::class, 'toko'])->name('home.toko');
+
     Route::get('/customer/lihat-pesanan',[PesananController::class, 'show'])->name('pesanan.show');
 
     Route::get('/customer/cart',[CartController::class, 'index'])->name('cart.index');
     Route::post('/customer/cart/update',[CartController::class, 'update'])->name('cart.update');
 
+    Route::get('/customer/buy-now/{id}',[BuyNowController::class, 'index'])->name('buynow.index');
+    Route::post('/customer/buy-now/cod',[BuyNowController::class, 'cod'])->name('buynow.cod');
+    Route::post('/customer/buy-now/transfer',[BuyNowController::class, 'transfer'])->name('buynow.transfer');
+
     Route::get('/customer/checkout',[CheckoutController::class, 'index'])->name('checkout.index');
     Route::post('/customer/checkout/cod',[CheckoutController::class, 'cod'])->name('checkout.cod');
     Route::post('/customer/checkout/transfer',[CheckoutController::class, 'transfer'])->name('checkout.transfer');
 
-    Route::get('/customer/customer/homepage/addcart/{id}',[HomeController::class, 'addcart'])->name('home.addcart');
-    Route::get('/customer/customer/homepage/delete/{id}',[HomeController::class, 'delete'])->name('home.delete');
+    Route::get('customer/homepage/addcart/{id}',[HomeController::class, 'addcart'])->name('home.addcart');
+    Route::get('customer/homepage/delete/{id}',[HomeController::class, 'delete'])->name('home.delete');
 
     Route::get('/dashboard/index', [DashboardController::class, 'index'])->name('dashboard.index');
 

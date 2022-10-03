@@ -36,14 +36,14 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center justify-content-between mb-2">
                         @include('admin.settings.modal.editprofile')
-                        <h6 class="card-title mb-0">About</h6>
+                        <h6 class="card-title mb-0">Tentang</h6>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfile" style="float: right">
                             Edit
                           </button>
                     </div>
                     <p>Hi! saya {{ Auth::user()->name }} sebagai {{ Auth::user()->role }}</p>
                     <div class="mt-3">
-                        <label class="tx-11 fw-bolder mb-0 text-uppercase">Joined:</label>
+                        <label class="tx-11 fw-bolder mb-0 text-uppercase">Tanggal Masuk:</label>
                         <p class="text-muted">{{ Auth::user()->created_at }}</p>
                     </div>
                     <div class="mt-3">

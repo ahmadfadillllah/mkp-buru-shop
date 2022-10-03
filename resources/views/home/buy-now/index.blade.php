@@ -88,17 +88,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($cart as $c)
                                 <tr class="cart_item">
                                     <td class="product-name">
-                                        {{ $c->namaproduk }} <strong class="product-quantity"> ×
-                                            {{ $c->quantity }}</strong>
+                                        {{ $produk->namaproduk }}<strong class="product-quantity"></strong>
                                     </td>
                                     <td class="product-total">
-                                        <span class="amount">@currency($c->hargaproduk * $c->quantity)</span>
+                                        <span class="amount">@currency($total)</span>
                                     </td>
                                 </tr>
-                                @endforeach
                             </tbody>
                             <tfoot>
                                 <tr class="cart_item">
@@ -139,12 +136,12 @@
                                             </h5>
                                         </div>
                                         <div id="payment-2" class="panel-collapse collapse" data-bs-parent="#faq">
-                                            <form action="{{ route('checkout.cod') }}" method="post">
+                                            <form action="{{ route('buynow.cod') }}" method="post">
                                                 @csrf
                                                 <div class="panel-body">
                                                     <div class="order-button-payment">
-                                                        <input type="text" name="cart_id[]" value="{{ $c->id }}" hidden>
-                                                        <input type="text" name="user_id[]" value="{{ Auth::user()->id }}" hidden>
+                                                        <input type="text" name="cart_id" value="{{ $produk->id }}" hidden>
+                                                        <input type="text" name="user_id" value="{{ Auth::user()->id }}" hidden>
                                                         <input type="submit" value="Pilih" />
                                                     </div>
                                                 </div>

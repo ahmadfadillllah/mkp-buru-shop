@@ -3,10 +3,10 @@
 <div class="breadcrumb-area pt-205 pb-210" style="background-image: url(https://template.hasthemes.com/ezone/ezone/assets/img/bg/breadcrumb.jpg)">
     <div class="container">
         <div class="breadcrumb-content text-center">
-            <h2>login</h2>
+            <h2>masuk</h2>
             <ul>
                 <li><a href="#">home</a></li>
-                <li> login </li>
+                <li> masuk </li>
             </ul>
         </div>
     </div>
@@ -26,7 +26,7 @@
                                 <div class="button-box">
                                     <div class="login-toggle-btn">
                                         <input type="checkbox">
-                                        <label>Remember me</label>
+                                        <label>Ingat saya</label>
                                         <a href="#">Lupa password?</a>
                                     </div>
                                     <button type="submit" class="default-btn floatright">Login</button>

@@ -49,7 +49,7 @@
                                 </select>
                             </div>
                         </div>
-                        <p>Penjual: {{ $p->name }}</p>
+                        <p>Penjual: {{ $p->name }} - <a href="{{ route('home.toko', $p->user_id) }}">(Kunjungi Toko)</a></p>
                         @if (Auth::user())
                         @foreach ($user->where('name',$p->name) as $item)
                             <a href="/dashboard/chat/{{ $item->id }}">
@@ -58,7 +58,7 @@
                         @endforeach
                         <div class="quickview-plus-minus">
                             <div class="quickview-btn-cart">
-                                <a class="btn-hover-black" href="{{ route('home.addcart', $p->id) }}">Add to cart</a>
+                                <a class="btn-hover-black" href="{{ route('home.addcart', $p->id) }}">Tambah ke keranjang</a>
                             </div>
                         </div>
                         @endif

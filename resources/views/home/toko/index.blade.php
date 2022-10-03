@@ -1,54 +1,12 @@
 @include('home.layout.head')
 @include('home.layout.header')
-<div class="slider-area">
-    <div class="slider-active owl-carousel">
-        <div class="single-slider-4 slider-height-6 bg-img"
-            style="background-image: url({{ asset('home') }}/assets/img/slider/figure1-home.jpg)">
-            <div class="container">
-                <div class="row">
-                    <div class="ms-auto col-lg-6">
-                        <div class="furniture-content fadeinup-animated">
-                            <h2 class="animated">Daftar <br>Koleksi.</h2>
-                            <p class="animated">Registrasikan Tokomu Sekarang untuk memulai jualan!</p>
-                            <a class="furniture-slider-btn btn-hover animated" href="{{ route('register') }}">Register</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="single-slider-4 slider-height-6 bg-img"
-            style="background-image: url({{ asset('home') }}/assets/img/slider/figure2-home.jpg)">
-            <div class="container">
-                <div class="row">
-                    <div class="ms-auto col-lg-6">
-                        <div class="furniture-content fadeinup-animated">
-                            <h2 class="animated">Daftar <br>Koleksi.</h2>
-                            <p class="animated">Registrasikan Tokomu Sekarang untuk memulai jualan!</p>
-                            <a class="furniture-slider-btn btn-hover animated" href="{{ route('register') }}">Register</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- product area start -->
 <div class="product-style-area pt-120">
     <div class="coustom-container-fluid">
         @include('auth.notification.index')
         <div class="section-title-7 text-center">
             <h2>Semua Produk</h2>
-            <p>Daftar produk yang dijual</p>
-        </div>
-        <div class="product-tab-list text-center mb-65 nav" role="tablist">
-            <a class="active" href="#furniture1" data-bs-toggle="tab" role="tab">
-                <h4>Home </h4>
-            </a>
-            @foreach ($kategoriproduk as $kp)
-            <a href="#{{ $kp->namakategori }}" data-bs-toggle="tab" role="tab">
-                <h4>{{ $kp->namakategori }} </h4>
-            </a>
-            @endforeach
+            <p>Daftar produk yang dijual oleh {{ $nama->name }}</p>
         </div>
         <div class="tab-content">
             <div class="tab-pane active show fade" id="furniture1" role="tabpanel">

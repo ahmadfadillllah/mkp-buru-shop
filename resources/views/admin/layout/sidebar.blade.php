@@ -85,7 +85,7 @@
             <li class="nav-item">
                 <a href="{{ route('settings.index') }}" class="nav-link">
                     <i class="link-icon" data-feather="user"></i>
-                    <span class="link-title">Settings</span>
+                    <span class="link-title">Pengaturan</span>
                 </a>
             </li>
             <li class="nav-item">

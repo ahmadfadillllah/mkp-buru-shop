@@ -10,12 +10,12 @@
                         <ul>
                             @if (Auth::user())
                                     <li><a href="{{ route('home.index') }}"> Home </a></li>
-                                    <li><a href="{{ route('home.about') }}"> About </a></li>
-                                    <li><a href="{{ route('contact.customer') }}"> Contact </a></li>
+                                    <li><a href="{{ route('home.about') }}"> Tentang </a></li>
+                                    <li><a href="{{ route('contact.customer') }}"> Kontak </a></li>
                             @else
                                     <li><a href="{{ route('homepage') }}"> Home </a></li>
-                                    <li><a href="{{ route('about') }}"> About </a></li>
-                                    <li><a href="{{ route('contact') }}"> Contact </a></li>
+                                    <li><a href="{{ route('about') }}"> Tentang </a></li>
+                                    <li><a href="{{ route('contact') }}"> Kontak </a></li>
                             @endif
                         </ul>
                     </nav>
@@ -31,12 +31,12 @@
                             <ul class="menu-overflow">
                                 @if (Auth::user())
                                     <li><a href="{{ route('home.index') }}"> Home </a></li>
-                                    <li><a href="{{ route('home.about') }}"> About </a></li>
-                                    <li><a href="{{ route('contact.customer') }}"> Contact </a></li>
+                                    <li><a href="{{ route('home.about') }}"> Tentang </a></li>
+                                    <li><a href="{{ route('contact.customer') }}"> Kontak </a></li>
                                 @else
                                     <li><a href="{{ route('homepage') }}"> Home </a></li>
-                                    <li><a href="{{ route('about') }}"> About </a></li>
-                                    <li><a href="{{ route('contact') }}"> Contact </a></li>
+                                    <li><a href="{{ route('about') }}"> Tentang </a></li>
+                                    <li><a href="{{ route('contact') }}"> Kontak </a></li>
                                 @endif
                             </ul>
                         </nav>
@@ -52,13 +52,13 @@
                     @if (Auth::user())
                     <ul>
                         <li><a href="{{ route('settings.index') }}">Profile </a></li>
-                        <li><a href="{{ route('logout') }}">Logout </a></li>
-                        <li><a href="{{ route('pesanan.show') }}">Lihat Pesanan </a></li>
+                        <li><a href="{{ route('logout') }}">Keluar </a></li>
+                        <li><a href="{{ route('pesanan.show') }}">Riwayat Pemesanan </a></li>
                     </ul>
                     @else
                     <ul>
-                        <li>Get Access: <a href="{{ route('logincustomer') }}">Login </a></li>
-                        <li><a href="{{ route('registercustomer') }}">Reg </a></li>
+                        <li>Get Access: <a href="{{ route('logincustomer') }}">Masuk </a></li>
+                        <li><a href="{{ route('registercustomer') }}">Daftar </a></li>
                     </ul>
                     @endif
 
