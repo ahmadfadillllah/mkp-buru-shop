@@ -52,7 +52,7 @@
                         <p>Penjual: {{ $p->name }} - <a href="{{ route('home.toko', $p->user_id) }}">(Kunjungi Toko)</a></p>
                         @if (Auth::user())
                         @foreach ($user->where('name',$p->name) as $item)
-                            <a href="/dashboard/chat/{{ $item->id }}">
+                            <a href="{{ route('chat.index'), $item->id }}">
                                 <p>Chat Penjual? Click Here!</p>
                             </a>
                         @endforeach
