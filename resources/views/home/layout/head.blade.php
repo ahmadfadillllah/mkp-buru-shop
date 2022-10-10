@@ -7,8 +7,8 @@
     <meta name="description" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script type="text/javascript"
-      src="https://app.sandbox.midtrans.com/snap/snap.js"
-      data-client-key="SB-Mid-client-YCHtULs46ydSA7tV"></script>
+      src="https://app.midtrans.com/snap/snap.js"
+      data-client-key="Mid-client-eDlpumo34Ky7XHE6"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('home') }}/assets/img/favicon.png">

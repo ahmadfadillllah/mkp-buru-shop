@@ -36,9 +36,9 @@ class BuyNowController extends Controller
         $grand_total = $total + $ongkir->ongkir;
 
         // Set your Merchant Server Key
-        \Midtrans\Config::$serverKey = 'SB-Mid-server-5aQABsAA0KihdYoBHSk1kgPy';
+        \Midtrans\Config::$serverKey = 'Mid-server-4_JmRwDaSjc-_j2Cxb2VfSgN';
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-        \Midtrans\Config::$isProduction = false;
+        \Midtrans\Config::$isProduction = true;
         // Set sanitization on (default)
         \Midtrans\Config::$isSanitized = true;
         // Set 3DS transaction for credit card to true
