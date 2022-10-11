@@ -53,7 +53,7 @@
                         @if (Auth::user())
                         @foreach ($user->where('name',$p->name) as $item)
                             <a href="/public/Chat/{{ $p->user_id }}">
-                                <p>Chat Penjual? Click Here!</p>
+                                <p>Chat Penjual? Klik Disini!</p>
                             </a>
                         @endforeach
                         <div class="quickview-plus-minus">

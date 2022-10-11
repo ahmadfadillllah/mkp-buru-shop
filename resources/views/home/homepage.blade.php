@@ -68,7 +68,7 @@
                                         <i class="pe-7s-cart"></i>
                                     </a>
                                     @endif
-                                    <a class="animate-right" title="Quick View" data-bs-toggle="modal"
+                                    <a class="animate-right" title="Detail Produk" data-bs-toggle="modal"
                                         data-bs-target="#detailProduk{{ $p->id }}" href="detailProduk{{ $p->id }}">
                                         <i class="pe-7s-look"></i>
                                     </a>
