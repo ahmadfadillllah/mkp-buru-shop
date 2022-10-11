@@ -28,7 +28,7 @@ class BuyNowController extends Controller
         ->select('cart.id as cart_id','produk.gambarproduk1', 'produk.namaproduk', 'produk.hargaproduk', 'cart.quantity')
         ->where('cart.user_id', '=', Auth::user()->id)->where('status','Belum Dipesan')->get()->pluck('cart_id');
 
-        $item = Produk::select('hargaproduk')->first();
+        $item = Produk::select('hargaproduk')->where('id', $id)->first();
 
         $ongkir = City::where('name', Auth::user()->kota->name)->select('ongkir')->first();
 
