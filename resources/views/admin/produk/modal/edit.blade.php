@@ -15,7 +15,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Harga Produk</label>
-                        <input class="form-control" name="hargaproduk" value="@currency($p->hargaproduk)" id="rupiah" type="text" required>
+                        <input class="form-control" id="rupiah" name="hargaproduk" value="@currency($p->hargaproduk)"  type="text" required>
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Stok Produk</label>

@@ -96,7 +96,7 @@ Route::group(['middleware' => ['auth', 'checkRole:customer,admin,penjual']], fun
 
     Route::get('/dashboard/produk', [ProdukController::class, 'index'])->name('produk.index');
     Route::post('/dashboard/produk/insert', [ProdukController::class, 'insert'])->name('produk.insert');
-    Route::get('/dashboard/produk/update/{id}', [ProdukController::class, 'update'])->name('produk.update');
+    Route::post('/dashboard/produk/update/{id}', [ProdukController::class, 'update'])->name('produk.update');
     Route::get('/dashboard/produk/delete/{id}', [ProdukController::class, 'delete'])->name('produk.delete');
 
     Route::get('/dashboard/pesanan', [PesananController::class, 'index'])->name('pesanan.index');
