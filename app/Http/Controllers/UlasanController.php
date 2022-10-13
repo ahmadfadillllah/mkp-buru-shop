@@ -11,11 +11,8 @@ class UlasanController extends Controller
     //
     public function index(Request $request)
     {
-        $ulasan = Ulasan::insert([
-            'user_id' => Auth::user()->id,
-            'produk_id' => $request->cart_id,
-            'ulasan' => $request->ulasan
-        ]);
+        $ulasan = Ulasan::where('produk_id', $request->produk_id)
+              ->update(['ulasan' => $request->ulasan]);
 
         if($ulasan){
             return redirect()->route('pesanan.show')->with('success', 'Ulasan telah dikirim');
