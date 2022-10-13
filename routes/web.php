@@ -17,6 +17,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\OngkirController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\UlasanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,6 +71,7 @@ Route::group(['middleware' => ['auth', 'checkRole:customer,admin,penjual']], fun
     Route::get('/customer/toko/{id}',[HomeController::class, 'toko'])->name('home.toko');
 
     Route::get('/customer/lihat-pesanan',[PesananController::class, 'show'])->name('pesanan.show');
+    Route::get('/customer/lihat-pesanan/ulasan',[UlasanController::class, 'index'])->name('ulasan.index');
 
     Route::get('/customer/cart',[CartController::class, 'index'])->name('cart.index');
     Route::post('/customer/cart/update',[CartController::class, 'update'])->name('cart.update');

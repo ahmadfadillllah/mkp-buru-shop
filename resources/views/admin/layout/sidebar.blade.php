@@ -36,7 +36,7 @@
                     </a>
                 </li>
             @endif
-            @if (Auth::user()->role == 'penjual')
+            @if (Auth::user()->role == 'penjual' or Auth::user()->role == 'admin')
                 <li class="nav-item">
                     <a href="{{ route('produk.index') }}" class="nav-link">
                         <i class="link-icon" data-feather="layout"></i>

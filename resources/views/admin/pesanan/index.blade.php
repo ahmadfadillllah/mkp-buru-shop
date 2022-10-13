@@ -56,7 +56,7 @@
                                                 <button type="submit" class="btn btn-success">Pesanan Selesai</button>
                                             </form>
                                         @elseif($p->status == 'Pesanan Selesai')
-                                                <button type="button" class="btn btn-success">Pesanan Selesai</button>
+                                                <button type="button" class="btn btn-info">Pesanan Selesai</button>
                                         @endif
                                     </td>
                                 </tr>

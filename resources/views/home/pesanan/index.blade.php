@@ -30,6 +30,8 @@
                                     <th>harga</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
+                                    <th>Ulasan</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,6 +46,18 @@
                                         <td class="product-price-cart"><span class="amount">@currency($c->hargaproduk)</span></td>
                                         <td class="product-price-cart"><span class="amount">{{ $c->quantity }}</span></td>
                                         <td class="product-subtotal">@currency($c->hargaproduk * $c->quantity)</td>
+                                        @if ($c->status == 'Pesanan Selesai')
+                                        <form action="{{ route('ulasan.index') }}" method="post">
+                                            @csrf
+                                            <td>
+                                                <input type="text" name="produk_id" value="{{ $c->produk_id }}" hidden>
+                                                <input type="text" name="ulasan" placeholder="Beri Ulasan">
+                                            </td>
+                                            <div class="order-button-payment">
+                                                <input type="submit" value="Kirim" />
+                                            </div>
+                                        </form>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>

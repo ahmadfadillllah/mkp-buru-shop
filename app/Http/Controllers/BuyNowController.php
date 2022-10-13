@@ -63,8 +63,14 @@ class BuyNowController extends Controller
 
     public function cod(Request $request)
     {
+        // dd($request->all());
         try {
-
+            Cart::insert([
+                'user_id' => Auth::user()->id,
+                'produk_id' => $request->cart_id,
+                'quantity' => 1,
+                'status' => 'Sudah Dipesan'
+            ]);
             Pesanan::insert([
                 'cart_id' => $request->cart_id,
                 'user_id' => Auth::user()->id,
