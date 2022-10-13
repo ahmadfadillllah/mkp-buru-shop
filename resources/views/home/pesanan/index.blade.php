@@ -50,9 +50,9 @@
                                         <form action="{{ route('ulasan.index') }}" method="post">
                                             @csrf
                                             <td>
-                                                <input type="text" name="produk_id" value="{{ $c->produk_id }}" hidden>
                                                 @foreach ($ulasan as $u)
                                                 @if($u->ulasan == NULL)
+                                                <input type="text" name="id" value="{{ $u->id }}" hidden>
                                                 <input type="text" name="ulasan" placeholder="Beri Ulasan">
                                                 @else
                                                 <td class="product-name"><a href="javascript:void(0);">{{ $u->ulasan }}</a></td>

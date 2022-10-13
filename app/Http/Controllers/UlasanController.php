@@ -11,7 +11,7 @@ class UlasanController extends Controller
     //
     public function index(Request $request)
     {
-        $ulasan = Ulasan::where('produk_id', $request->produk_id)
+        $ulasan = Ulasan::where('id', $request->id)
               ->update(['ulasan' => $request->ulasan]);
 
         if($ulasan){
