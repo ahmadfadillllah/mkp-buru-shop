@@ -38,7 +38,7 @@ class PesananController extends Controller
         ->join('produk', 'pesanan.cart_id', 'produk.id')
         ->select('pesanan.id', 'produk.id', 'pesanan.user_id', 'users.name', 'cart.status', 'pesanan.metode_pembayaran', 'produk.namaproduk', 'produk.hargaproduk', 'cart.quantity', 'produk.gambarproduk1')->where('pesanan.user_id', Auth::user()->id)->get();
 
-        $ulasan = Ulasan::where('user_id', Auth::user()->id)->first();
+        $ulasan = Ulasan::where('user_id', Auth::user()->id)->get();
         // dd($pesanan);
         return view('home.pesanan.index', compact('cart', 'total', 'pesanan', 'ulasan'));
     }
