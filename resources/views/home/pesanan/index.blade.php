@@ -60,7 +60,7 @@
                                                 @endforeach
                                             </td>
                                             <div class="order-button-payment">
-                                                <input type="submit" value="Kirim" />
+                                                <input type="submit" value="Kirim" hidden/>
                                             </div>
                                         </form>
                                         @endif

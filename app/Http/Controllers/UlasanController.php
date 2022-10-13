@@ -18,8 +18,8 @@ class UlasanController extends Controller
         ]);
 
         if($ulasan){
-            return redirect()->back()->with('success', 'Ulasan telah dikirim');
+            return redirect()->route('pesanan.show')->with('success', 'Ulasan telah dikirim');
         }
-        return redirect()->back()->with('info', 'Ulasan gagal dikirim');
+        return redirect()->route('pesanan.show')->with('info', 'Ulasan gagal dikirim');
     }
 }
