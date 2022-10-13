@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pesanan;
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\Ulasan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -37,8 +38,9 @@ class PesananController extends Controller
         ->join('produk', 'pesanan.cart_id', 'produk.id')
         ->select('pesanan.id', 'produk.id', 'pesanan.user_id', 'users.name', 'cart.status', 'pesanan.metode_pembayaran', 'produk.namaproduk', 'produk.hargaproduk', 'cart.quantity', 'produk.gambarproduk1')->where('pesanan.user_id', Auth::user()->id)->get();
 
+        $ulasan = Ulasan::where('user_id', Auth::user()->id);
         // dd($pesanan);
-        return view('home.pesanan.index', compact('cart', 'total', 'pesanan'));
+        return view('home.pesanan.index', compact('cart', 'total', 'pesanan', 'ulasan'));
     }
 
     public function konfirmasiPesanan(Request $request)

@@ -9,6 +9,7 @@ use App\Models\Produk;
 use Illuminate\Support\Facades\Auth;
 use Laravolt\Indonesia\Models\City;
 use App\Models\Pesanan;
+use App\Models\Ulasan;
 
 class BuyNowController extends Controller
 {
@@ -75,6 +76,10 @@ class BuyNowController extends Controller
                 'cart_id' => $request->cart_id,
                 'user_id' => Auth::user()->id,
                 'metode_pembayaran' => 'COD'
+            ]);
+            Ulasan::insert([
+                'produk_id' => $request->cart_id,
+                'user_id' => Auth::user()->id,
             ]);
             return redirect()->route('home.index')->with('success', 'Produk Sudah Dipesan');
         } catch (\Throwable $th) {

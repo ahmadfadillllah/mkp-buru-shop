@@ -51,7 +51,11 @@
                                             @csrf
                                             <td>
                                                 <input type="text" name="produk_id" value="{{ $c->produk_id }}" hidden>
+                                                @if($ulasan->ulasan == NULL)
                                                 <input type="text" name="ulasan" placeholder="Beri Ulasan">
+                                                @else
+                                                <td class="product-name"><a href="javascript:void(0);">{{ $ulasan->ulasan }}</a></td>
+                                                @endif
                                             </td>
                                             <div class="order-button-payment">
                                                 <input type="submit" value="Kirim" />
