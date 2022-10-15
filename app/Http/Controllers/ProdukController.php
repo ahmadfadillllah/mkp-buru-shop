@@ -104,12 +104,14 @@ class ProdukController extends Controller
 
     public function delete($id)
     {
-        $produk = Produk::find($id)->delete();
+        try {
+            $produk = Produk::find($id)->delete();
 
-        if($produk){
-            return redirect()->route('produk.index')->with('success', 'Produk telah dihapus');
+            if($produk){
+                return redirect()->route('produk.index')->with('success', 'Produk telah dihapus');
+            }
+        } catch (\Throwable $th) {
+            return redirect()->route('produk.index')->with('info', 'Produk gagal dihapus/Purdok sudah ada yang beli');
         }
-
-        return redirect()->route('produk.index')->with('info', 'Produk gagal dihapus');
     }
 }
